@@ -1,0 +1,47 @@
+class Instrumento:
+    def __init__(self, nombre, material):
+        self.nombre = nombre
+        self.material = material
+
+    def indicar_sonido(self):
+        return "Produce sonidos musicales"
+
+    def mostrar_informacion(self):
+        print(f"Nombre: {self.nombre}")
+        print(f"Material: {self.material}")
+        print(f"Tipo de sonido: {self.indicar_sonido()}")
+
+
+class Guitarra(Instrumento):
+    def __init__(self, material):
+        super().__init__("Guitarra", material)
+
+    def tocar_notas(self):
+        return "Do Re Mi Fa Sol"
+
+    def mostrar_informacion(self):
+        super().mostrar_informacion()
+        print(f"Notas: {self.tocar_notas()}")
+
+
+class Piano(Instrumento):
+    def __init__(self, material):
+        super().__init__("Piano", material)
+
+    def tocar_notas(self):
+        return "La Si Do Re Mi"
+
+    def mostrar_informacion(self):
+        super().mostrar_informacion()
+        print(f"Notas: {self.tocar_notas()}")
+
+
+# Ejemplo de uso
+if __name__ == "__main__":
+    g = Guitarra("Madera")
+    g.mostrar_informacion()
+
+    print()
+
+    p = Piano("Metal")
+    p.mostrar_informacion()
