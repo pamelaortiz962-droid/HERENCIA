@@ -1,0 +1,43 @@
+class Animal:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+    def mostrar_detalles(self):
+        print(f"Nombre: {self.nombre}")
+        print(f"Edad: {self.edad}")
+
+
+class Perro(Animal):
+    def __init__(self, nombre, edad):
+        super().__init__(nombre, edad)
+
+    def emitir_sonido(self):
+        return "Brr Brr"
+
+    def mostrar_detalles(self):
+        super().mostrar_detalles()
+        print(f"Sonido: {self.emitir_sonido()}")
+
+
+class Gato(Animal):
+    def __init__(self, nombre, edad):
+        super().__init__(nombre, edad)
+
+    def emitir_sonido(self):
+        return "Nya Nya"
+
+    def mostrar_detalles(self):
+        super().mostrar_detalles()
+        print(f"Sonido: {self.emitir_sonido()}")
+
+
+# Ejemplo de uso
+if __name__ == "__main__":
+    p = Perro("Pancracio", 3)
+    p.mostrar_detalles()
+
+    print()
+
+    g = Gato("Madonna", 2)
+    g.mostrar_detalles()
