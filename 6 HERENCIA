@@ -1,0 +1,47 @@
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+    def mostrar_informacion(self):
+        print(f"Nombre: {self.nombre}")
+        print(f"Edad: {self.edad}")
+
+
+class Estudiante(Persona):
+    def __init__(self, nombre, edad, curso):
+        super().__init__(nombre, edad)
+        self.curso = curso
+
+    def asignar_rol(self):
+        return "Estudiante"
+
+    def mostrar_informacion(self):
+        super().mostrar_informacion()
+        print(f"Rol: {self.asignar_rol()}")
+        print(f"Curso: {self.curso}")
+
+
+class Profesor(Persona):
+    def __init__(self, nombre, edad, materia):
+        super().__init__(nombre, edad)
+        self.materia = materia
+
+    def asignar_rol(self):
+        return "Profesor"
+
+    def mostrar_informacion(self):
+        super().mostrar_informacion()
+        print(f"Rol: {self.asignar_rol()}")
+        print(f"Materia: {self.materia}")
+
+
+# Ejemplo de uso
+if __name__ == "__main__":
+    e = Estudiante("Rosita", 17, "Programación")
+    e.mostrar_informacion()
+
+    print()
+
+    p = Profesor("Rebollo", 100, "Matemática")
+    p.mostrar_informacion()
