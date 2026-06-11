@@ -1,0 +1,50 @@
+from datetime import date
+
+class Producto:
+    def __init__(self, nombre, precio, fecha_vencimiento):
+        self.nombre = nombre
+        self.precio = precio
+        self.fecha_vencimiento = fecha_vencimiento
+
+    def mostrar_detalles(self):
+        print(f"Nombre: {self.nombre}")
+        print(f"Precio: ${self.precio}")
+        print(f"Fecha de vencimiento: {self.fecha_vencimiento}")
+
+
+class ProductoAlimenticio(Producto):
+    def __init__(self, nombre, precio, fecha_vencimiento):
+        super().__init__(nombre, precio, fecha_vencimiento)
+
+    def aplicar_descuento(self):
+        if self.fecha_vencimiento <= date.today():
+            return self.precio * 0.50
+        else:
+            return self.precio * 0.10
+
+    def mostrar_detalles(self):
+        super().mostrar_detalles()
+        print(f"Descuento: ${self.aplicar_descuento():.2f}")
+
+
+class ProductoElectronico(Producto):
+    def __init__(self, nombre, precio, fecha_vencimiento):
+        super().__init__(nombre, precio, fecha_vencimiento)
+
+    def aplicar_descuento(self):
+        return self.precio * 0.15
+
+    def mostrar_detalles(self):
+        super().mostrar_detalles()
+        print(f"Descuento: ${self.aplicar_descuento():.2f}")
+
+
+# Ejemplo de uso
+if __name__ == "__main__":
+    p1 = ProductoAlimenticio("Letse", 2500, date(2026, 6, 1))
+    p1.mostrar_detalles()
+
+    print()
+
+    p2 = ProductoElectronico("Auriculares", 30000, date(2028, 12, 31))
+    p2.mostrar_detalles()
