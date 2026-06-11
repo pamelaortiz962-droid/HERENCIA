@@ -1,0 +1,53 @@
+class Pago:
+    def __init__(self, monto, fecha):
+        self.monto = monto
+        self.fecha = fecha
+
+    def mostrar_detalles(self):
+        print(f"Monto: ${self.monto}")
+        print(f"Fecha: {self.fecha}")
+
+
+class PagoTarjeta(Pago):
+    def __init__(self, monto, fecha):
+        super().__init__(monto, fecha)
+
+    def procesar_pago(self):
+        return "Pago procesado con tarjeta."
+
+    def generar_recibo(self):
+        return f"Recibo de pago por ${self.monto}"
+
+    def mostrar_detalles(self):
+        super().mostrar_detalles()
+        print(f"Método: Tarjeta")
+        print(f"Estado: {self.procesar_pago()}")
+        print(f"{self.generar_recibo()}")
+
+
+class PagoPayPal(Pago):
+    def __init__(self, monto, fecha):
+        super().__init__(monto, fecha)
+
+    def procesar_pago(self):
+        return "Pago procesado con PayPal."
+
+    def generar_recibo(self):
+        return f"Recibo de pago por ${self.monto}"
+
+    def mostrar_detalles(self):
+        super().mostrar_detalles()
+        print(f"Método: PayPal")
+        print(f"Estado: {self.procesar_pago()}")
+        print(f"{self.generar_recibo()}")
+
+
+# Ejemplo de uso
+if __name__ == "__main__":
+    tarjeta = PagoTarjeta(50000, "10/06/2026")
+    tarjeta.mostrar_detalles()
+
+    print()
+
+    paypal = PagoPayPal(35000, "10/06/2026")
+    paypal.mostrar_detalles()
